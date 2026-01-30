@@ -135,7 +135,7 @@ class TikTokAdsServiceImpl implements TikTokAdsService {
       } else {
         return {
           isValid: false,
-          error: this.getMusicErrorMessage(response.code, response.message)
+          error: this.getMusicErrorMessage(response.code)
         };
       }
 
@@ -148,7 +148,7 @@ class TikTokAdsServiceImpl implements TikTokAdsService {
     }
   }
 
-  private getMusicErrorMessage(code: number, message: string): string {
+  private getMusicErrorMessage(code: number): string {
     const errorMap: Record<number, string> = {
       40001: 'The selected music is not available. Please choose a different track.',
       40002: 'This music track has usage restrictions and cannot be used.',
@@ -203,7 +203,7 @@ class TikTokAdsServiceImpl implements TikTokAdsService {
       return {
         success: false,
         error: {
-          code: error.code || 'AD_CREATION_FAILED',
+          code: (error as any)?.code || 'AD_CREATION_FAILED',
           message: this.getErrorMessage(error)
         }
       };

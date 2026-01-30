@@ -9,7 +9,7 @@ import ErrorBanner from './ErrorBanner';
 
 const initialFormData: AdFormData = {
   campaignName: '',
-  objective: '',
+  objective: 'Traffic',
   adText: '',
   cta: '',
   musicOption: 'existing',
@@ -52,7 +52,7 @@ const AdCreationForm: React.FC = () => {
     }
   }, [formData]);
 
-  const handleValidationChange = useCallback((field: keyof AdFormData, error: string | null) => {
+  const handleValidationChange = useCallback((field: keyof ValidationErrors, error: string | null) => {
     setErrors(prev => ({ ...prev, [field]: error || undefined }));
   }, []);
 

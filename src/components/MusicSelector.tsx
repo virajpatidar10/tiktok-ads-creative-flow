@@ -7,7 +7,7 @@ interface MusicSelectorProps {
   formData: AdFormData;
   errors: ValidationErrors;
   onChange: (field: keyof AdFormData, value: string) => void;
-  onValidationChange?: (field: keyof AdFormData, error: string | null) => void;
+  onValidationChange?: (field: keyof ValidationErrors, error: string | null) => void;
 }
 
 const MusicSelector: React.FC<MusicSelectorProps> = ({
@@ -162,7 +162,7 @@ const MusicSelector: React.FC<MusicSelectorProps> = ({
       {formData.musicOption === 'existing' && (
         <FormField
           label="Music ID"
-          error={errors.musicId}
+          error={errors.music}
           required
         >
           <div className="music-id-input">
@@ -187,7 +187,7 @@ const MusicSelector: React.FC<MusicSelectorProps> = ({
       {formData.musicOption === 'upload' && (
         <FormField
           label="Upload Music File"
-          error={errors.musicId}
+          error={errors.music}
           required
         >
           <div className="file-upload">

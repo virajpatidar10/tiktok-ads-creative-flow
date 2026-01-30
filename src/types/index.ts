@@ -9,10 +9,12 @@ export interface AdFormData {
 
 export interface ValidationErrors {
   campaignName?: string;
+  objective?: string;
   adText?: string;
   cta?: string;
   music?: string;
   global?: string;
+  [key: string]: string | undefined;
 }
 
 export interface ApiError {

@@ -139,7 +139,7 @@ export class FormValidator {
 
   // Helper method to validate individual fields with debouncing
   createDebouncedValidator(field: keyof AdFormData, delay: number = 300) {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     
     return (value: any, formData: AdFormData, callback: (error: string | null) => void) => {
       clearTimeout(timeoutId);

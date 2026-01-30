@@ -67,10 +67,6 @@ class MusicServiceImpl implements MusicService {
     return `music_${timestamp}_${random}`;
   }
 
-  private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   // Helper method to validate music requirements based on campaign objective
   validateMusicRequirement(objective: string, musicOption: string): ValidationResult {
     if (objective === 'Conversions' && musicOption === 'none') {

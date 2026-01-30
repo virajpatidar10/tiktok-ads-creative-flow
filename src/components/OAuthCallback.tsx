@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { oauthService } from '../services/oauthService';
-import { useAuth } from '../contexts/AuthContext';
 
 const OAuthCallback: React.FC = () => {
   const [searchParams] = useSearchParams();
