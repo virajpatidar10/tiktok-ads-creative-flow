@@ -6,9 +6,16 @@ import ConnectButton from './components/ConnectButton';
 import AdCreationForm from './components/AdCreationForm';
 import OAuthCallback from './components/OAuthCallback';
 import TikTokVerification from './components/TikTokVerification';
+import TermsOfService from './components/TermsOfService';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import DemoModeButton from './components/DemoModeButton';
 import './App.css';
 
 const App: React.FC = () => {
+  const enableDemoMode = () => {
+    window.dispatchEvent(new Event('enableDemoMode'));
+  };
+
   return (
     <ErrorBoundary>
       <AuthProvider>
@@ -26,6 +33,8 @@ const App: React.FC = () => {
                 <Route path="/" element={<AdCreationForm />} />
                 <Route path="/auth/callback" element={<OAuthCallback />} />
                 <Route path="/tiktokhlp5h1wrlMz6FSavDE3ExkPlBvwP3iC3.txt" element={<TikTokVerification />} />
+                <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
               </Routes>
             </main>
 
@@ -37,6 +46,9 @@ const App: React.FC = () => {
                 </p>
               </div>
             </footer>
+
+            {/* Demo Mode Button - Only visible for video recording */}
+            <DemoModeButton onEnableDemoMode={enableDemoMode} />
           </div>
         </Router>
       </AuthProvider>

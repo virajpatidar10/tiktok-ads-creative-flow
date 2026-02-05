@@ -46,6 +46,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
     }
     setIsLoading(false);
+
+    // Listen for demo mode activation
+    const handleDemoMode = () => {
+      const demoToken = 'demo_token_' + Date.now();
+      localStorage.setItem('tiktok_access_token', demoToken);
+      setToken(demoToken);
+      setIsAuthenticated(true);
+      setUser({
+        id: 'demo_user_123',
+        name: 'Demo TikTok User',
+        email: 'demo@tiktok.com'
+      });
+    };
+
+    window.addEventListener('enableDemoMode', handleDemoMode);
+    return () => window.removeEventListener('enableDemoMode', handleDemoMode);
   }, []);
 
   const login = () => {
