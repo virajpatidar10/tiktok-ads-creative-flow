@@ -4,13 +4,17 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/tiktokhlp5h1wrlMz6FSavDE3ExkPlBvwP3iC3.txt",
+      "destination": "/tiktokhlp5h1wrlMz6FSavDE3ExkPlBvwP3iC3.txt"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/tiktok5VkPYMSS9ikcq5SrtW6N6GXVoIqqJcyY.txt",
+      "source": "/tiktokhlp5h1wrlMz6FSavDE3ExkPlBvwP3iC3.txt",
       "headers": [
         {
           "key": "Content-Type",

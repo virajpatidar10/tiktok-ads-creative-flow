@@ -185,3 +185,90 @@
   - Record 5-minute demonstration showing key functionality
   - Document improvement areas and production considerations
   - _Requirements: All requirements_
+
+- [ ] 8. TikTok Developer Account Setup and Campaign API Integration
+
+**IMPORTANT SETUP NOTES:**
+- **VPN Required**: TikTok Developer Portal may be geo-restricted. Use a VPN to access https://developers.tiktok.com/ and create your developer account
+- **Get API Credentials**: Once you have developer access, create an app to obtain Client ID, Client Secret, and configure OAuth redirect URLs
+- **Campaign API Focus**: This task focuses on integrating TikTok Campaign API logic (not creating actual campaigns, but implementing the integration logic)
+
+- [ ] 8.1 Complete TikTok Developer Account Setup
+
+  - Use VPN to access TikTok Developer Portal (https://developers.tiktok.com/)
+  - Create TikTok Developer account and verify email
+  - Create a new app in the developer portal
+  - Obtain Client ID and Client Secret from app settings
+  - Configure OAuth redirect URLs for local development and production
+  - Add credentials to .env file (VITE_TIKTOK_CLIENT_ID, VITE_TIKTOK_CLIENT_SECRET)
+  - Document the setup process in TIKTOK_SETUP.md
+  - _Requirements: 1.1, 1.2_
+
+- [ ] 8.2 Research and document TikTok Campaign API endpoints
+
+  - Review TikTok Campaign API documentation (https://business-api.tiktok.com/portal/docs)
+  - Identify required endpoints for campaign creation workflow:
+    - Advertiser account retrieval
+    - Campaign creation
+    - Ad group creation
+    - Ad creative upload and creation
+  - Document API request/response structures and required parameters
+  - Note any prerequisites (advertiser ID, business center access, etc.)
+  - _Requirements: 2.1, 5.1_
+
+- [ ] 8.3 Implement Campaign API service methods
+
+  - Extend tikTokAdsService.ts with Campaign API methods:
+    - `getAdvertiserAccounts()` - Retrieve available advertiser accounts
+    - `createCampaign(params)` - Create campaign with objective and budget
+    - `createAdGroup(campaignId, params)` - Create ad group with targeting
+    - `uploadCreative(file)` - Upload video/image creative
+    - `createAd(adGroupId, creativeId, params)` - Create final ad
+  - Implement proper error handling for each endpoint
+  - Add TypeScript interfaces for API request/response types
+  - Use proper authentication headers with OAuth access token
+  - _Requirements: 2.1, 2.2, 2.3, 4.1, 5.1, 6.1_
+
+- [ ] 8.4 Integrate Campaign API into form submission flow
+
+  - Update AdCreationForm submission logic to call Campaign API methods in sequence
+  - Implement step-by-step campaign creation workflow:
+    1. Validate user is authenticated
+    2. Get advertiser account
+    3. Create campaign with selected objective
+    4. Create ad group with default targeting
+    5. Upload creative (if provided)
+    6. Create ad with text and CTA
+  - Add loading states for each step with progress indicators
+  - Handle partial failures and provide rollback guidance
+  - _Requirements: 5.1, 5.2, 5.3, 6.5_
+
+- [ ] 8.5 Add Campaign API error handling and validation
+
+  - Map Campaign API error codes to user-friendly messages
+  - Handle common errors:
+    - Insufficient permissions
+    - Invalid advertiser account
+    - Budget/targeting validation errors
+    - Creative format/size issues
+  - Add retry logic for transient failures
+  - Implement proper error recovery and user guidance
+  - _Requirements: 4.2, 4.3, 4.4, 6.1, 6.2, 6.3_
+
+- [ ] 8.6 Test Campaign API integration logic
+
+  - Write unit tests for Campaign API service methods
+  - Mock API responses for different scenarios (success, errors, edge cases)
+  - Test the complete campaign creation workflow
+  - Verify error handling and retry logic
+  - Document any API limitations or quirks discovered during testing
+  - _Requirements: 5.1, 5.2, 5.3, 6.1_
+
+- [ ] 8.7 Update documentation with Campaign API integration
+
+  - Document Campaign API integration in README.md
+  - Add notes about API prerequisites (advertiser account, permissions)
+  - Include example API request/response payloads
+  - Document known limitations and future improvements
+  - Update TIKTOK_SETUP.md with Campaign API access requirements
+  - _Requirements: All requirements_
