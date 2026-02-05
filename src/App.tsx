@@ -5,6 +5,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import ConnectButton from './components/ConnectButton';
 import AdCreationForm from './components/AdCreationForm';
 import OAuthCallback from './components/OAuthCallback';
+import TikTokVerification from './components/TikTokVerification';
 import './App.css';
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<AdCreationForm />} />
                 <Route path="/auth/callback" element={<OAuthCallback />} />
+                <Route path="/tiktokhlp5h1wrlMz6FSavDE3ExkPlBvwP3iC3.txt" element={<TikTokVerification />} />
               </Routes>
             </main>
 
